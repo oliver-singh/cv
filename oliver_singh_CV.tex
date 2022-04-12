@@ -1,0 +1,145 @@
+\documentclass[a4paper]{article}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=false,
+}
+\usepackage{calc}
+\usepackage{array}
+\usepackage{ifthen}
+\usepackage[margin=0.9 in, tmargin=0.8 in, bmargin=0.3 in]{geometry}
+\usepackage{titlesec}
+\titleformat{\section}
+    {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+	
+\titlespacing*{\section}{0pt}{7pt}{10pt}	
+
+\newcommand{\tablebreak}{\multicolumn{2}{c}{} \\}
+
+
+
+\newlength{\datelength} 
+\setlength{\datelength}{2.3cm}
+\newlength{\descriptionlength} 
+\setlength{\descriptionlength}{\linewidth- \datelength - 2\tabcolsep - \arrayrulewidth} 
+
+\newenvironment{datejobtable}{\begin{tabular}{@{} >{\raggedleft}p{\datelength} | p{\linewidth- \datelength - 2\tabcolsep - \arrayrulewidth} @{}}}{\end{tabular}}
+
+%\job[job title]{from}{to}{employer}{description}
+\newcommand{\job}[5][]{
+
+\textsc{#2} \ifthenelse{\equal{#3}{}}{}{to}  & \textbf{#4}\\
+\ifthenelse{\equal{#3}{Present}}{Present}{\textsc{#3}}\ifthenelse{\equal{#1}{}}{}{&\textit{#1}\\}&\small #5\\
+}
+\newcommand{\subjob}[2][]{
+\ifthenelse{\equal{#1}{}}{}{&\textit{#1}\\}&\small #2\\
+}
+
+%\paper[link]{date}{title}{journal}
+\newcommand{\paper}[4][]{
+\textsc{#2} & \href{#1}{\textit{#3},  #4.}\\
+}
+
+
+
+%\arxivpaper[submitted to blah]{date}{title}{arxivid}
+\newcommand{\arxivpaper}[4][]{
+\paper[https://arxiv.org/abs/#4]{#2}{#3}{Preprint, arXiv:#4\ifthenelse{\equal{#1}{}}{}{, #1}}
+}
+
+	
+\begin{document}
+\pagestyle{empty}
+\bigbreak
+{\center \textsc{\huge Oliver Singh}\\}
+
+\section*{Personal Information} 
+\begin{tabular}{r l}
+\textsc{Date of Birth:}     & 25\textsuperscript{th} March 1995\\ 
+%\textsc{Address:} & Department of Mathematical Sciences, Durham University, Mountjoy Centre, \\
+%&Stockton Rd, Durham DH1 3LE.\\
+\textsc{Email:} & \href{mailto:oliver.s.singh@gmail.com}{oliver.s.singh@gmail.com}\\
+\textsc{Phone:} & {+447443656430}\\
+\end{tabular}
+
+
+%\section*{Research Interests}
+%Low dimensional topology, smooth and topological 4-manifolds, and knotted surfaces. Knot theory, and categorification of knot invariants.
+
+
+\section*{Education}
+\begin{datejobtable}
+
+\job[PhD in Mathematics]{Oct. 2017}{Present}{University of Durham}{Research in Low dimensional topology, under the supervision of Dr.~Andrew Lobb and Dr.~Mark Powell. Funded by an EPSRC grant.}
+
+\tablebreak
+
+\job[BA with MMath, First Class $+$ Distinction]{Oct. 2013}{Jun. 2017}{University of Cambridge, Mathematical Tripos}{Distinction in part III and first class in part II. }
+
+\tablebreak
+
+\job{Sept. 2011}{Jul. 2013}{St. Aidan's \& St. John Fisher Associated Sixth Form}{A-Levels in Mathematics \textbf{A*}, Further Mathematics \textbf{A*} and Physics \textbf{A*}. \small AS-Level Chemistry, \textbf{A}. \\ &\small STEP: Paper I \textbf{S}, Paper II \textbf{S}, Paper III \textbf{1}.}
+
+\end{datejobtable}
+
+
+\section*{Experience}
+\begin{datejobtable}
+
+\job[Visiting Researcher]{Jan. 2021}{Mar. 2021}{Max-Planck-Institut f\"ur Mathematik}{Visiting the mathematics research institute in Bonn, Germany, to carry out collaborative research in low-dimensional topology.}
+
+\tablebreak
+
+\job[Grade 7 - Senior Analyst, Data Scientist]{Jun. 2020}{Dec. 2020}{Cabinet Office - COBR, COVID-19 Taskforce}{Surge hire during the COVID-19 crisis. Initially working for CCS and COBR, I directly contributed to briefings for the prime minister, ministers, and senior officials on the status of the pandemic. From August I worked within the Covid-19 taskforce, and worked on and managed data science projects (using Python and Git/GitHub). Throughout, I helped to run an intra-government COVID-19 dashboard, and designed and wrote a Python package used by analysts for the day to day running of the dashboard.}
+\tablebreak
+\job[Teaching Assistant]{Oct. 2017}{Present}{University of Durham}{Leading tutorials of 13-20 undergraduates in Analysis I, Topology II, and Algebra II.}
+\subjob[Lecturer]{Giving six hours of lectures for Algebraic Topology IV, covering for Dr.~Mark Powell.}
+
+%\tablebreak
+%\job{Apr. 2017}{}{Pearson Education}{Checking Pearson's  Edexcel A-level maths maths textbook "Pure Mathematics Year 2", for mathematical accuracy.}
+
+\end{datejobtable}
+
+\section*{Papers}
+
+\begin{datejobtable}
+
+\arxivpaper{Nov. 2021}{Pseudo-isotopies and diffeomorphisms of 4-manifolds}{2111.15658}
+\tablebreak
+\paper[https://arxiv.org/abs/1905.00763]{May 2019}{Distances Between Surfaces in $4$-Manifolds}{Journal of Topology, 13. 1034-1057}
+
+\end{datejobtable} 
+
+\section*{Academic Talks}
+
+I have given talks on my research in person at the University of Geneva, the University of Sydney, the University of Cambridge, Durham University, and the Max Plank Institute for Mathematics. I have also given virtual talks for a number of geometry and topology seminars.
+
+\section*{Skills}
+
+Competent Python, experience working on and managing collaborative coding projects using Git and Gitflow. Experience with AWS cloud computing services. Competent \LaTeX.
+
+%\begin{tabular}{r | p{13.3cm}}
+%
+%\textsc{Dec. 2019} & \textbf{Durham University, Geometry and Topology Seminar}\\
+%&\small Knotted Surfaces in 4-manifolds and Distances Between Them.\\
+%\multicolumn{2}{c}{} \\
+%
+%\textsc{Nov. 2019} & \textbf{University of Geneva, Topology and Geometry Seminar}\\
+%&\small Knotted Surfaces in 4-manifolds and Distances Between Them.\\
+%\multicolumn{2}{c}{} \\
+%
+%
+%\textsc{Nov. 2019} & \textbf{University of Cambridge, Differential Geometry and Topology Seminar}\\
+%&\small Knotted Surfaces in 4-manifolds and Distances Between Them.\\
+%\multicolumn{2}{c}{} \\
+%
+%
+%\textsc{Sept. 2019} & \textbf{University of Sydney, Geometry and Topology Seminar}\\
+%&\small Knotted Surfaces in 4-manifolds and Distances Between Them.\\
+%\multicolumn{2}{c}{} \\
+%
+%\textsc{Nov. 2018} & \textbf{University of Cambridge, Junior Geometry Seminar}\\
+%&\small On Skein modules and Knots in $3$-manifolds.\\
+%
+%\end{tabular}
+
+\end{document}
